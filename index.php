@@ -106,7 +106,7 @@
         var mapOptions = {
            center: [42.31298,69.72328],
            zoom: 4
-        }
+        };
          
          // Creating a map object
         var map = new L.map('map', mapOptions);
