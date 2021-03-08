@@ -387,7 +387,7 @@
                                         </p>
                                     </div>
                                     <div class="two">
-                                        <span class="price per-price">$400<br><small>/night</small></span>
+                                        <span class="price per-price">$400<br><small>/month</small></span>
                                     </div>
                                 </div>
                                 <p>Far far away, behind the word mountains, far from the countries</p>
@@ -420,7 +420,7 @@
                                         </p>
                                     </div>
                                     <div class="two">
-                                        <span class="price per-price">$500<br><small>/night</small></span>
+                                        <span class="price per-price">$500<br><small>/month</small></span>
                                     </div>
                                 </div>
                                 <p>Far far away, behind the word mountains, far from the countries</p>
@@ -453,7 +453,7 @@
                                         </p>
                                     </div>
                                     <div class="two">
-                                        <span class="price per-price">$200<br><small>/night</small></span>
+                                        <span class="price per-price">$200<br><small>/month</small></span>
                                     </div>
                                 </div>
                                 <p>Far far away, behind the word mountains, far from the countries</p>
@@ -486,7 +486,7 @@
                                         </p>
                                     </div>
                                     <div class="two">
-                                        <span class="price per-price">$250<br><small>/night</small></span>
+                                        <span class="price per-price">$250<br><small>/month</small></span>
                                     </div>
                                 </div>
                                 <p>Far far away, behind the word mountains, far from the countries</p>
@@ -519,7 +519,7 @@
                                         </p>
                                     </div>
                                     <div class="two">
-                                        <span class="price per-price">$40<br><small>/night</small></span>
+                                        <span class="price per-price">$40<br><small>/month</small></span>
                                     </div>
                                 </div>
                                 <p>Far far away, behind the word mountains, far from the countries</p>
