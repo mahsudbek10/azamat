@@ -1,16 +1,22 @@
 <?php
 
+require_once './db/db.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
+        <title>LM IS</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!--        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">-->
+        <!-- Select2 -->
+        <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+        <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+        <!-- Toastr -->
+        <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+        <!-- SweetAlert2 -->
+        <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
         <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
         <link rel="stylesheet" href="css/animate.css">
@@ -44,20 +50,18 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container">
-                <a class="navbar-brand" href="index.html">dirEngine.</a>
+                <a class="navbar-brand" href="index">LM IS.</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="oi oi-menu"></span> Menu
                 </button>
 
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                        <li class="nav-item"><a href="tour.html" class="nav-link">Tour</a></li>
-                        <li class="nav-item"><a href="hotel.html" class="nav-link">Hotels</a></li>
-                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                        <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Add listing</span></a></li>
+                        <li class="nav-item active"><a href="index" class="nav-link">Главная</a></li>
+                        <li class="nav-item"><a href="#about" class="nav-link">О нас</a></li>
+                        <li class="nav-item"><a href="#better" class="nav-link">Специальности</a></li>
+                        <li class="nav-item"><a href="#section-counter" class="nav-link">Факты</a></li>
+                        <li class="nav-item cta"><a href="#" class="nav-link"><span>Войти</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -69,26 +73,35 @@
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
                     <div class="col-md-6 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                        <!--<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>Explore <br></strong> your amazing city</h1>-->
+                        <h3 class="mb-4 text-light" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Информационная система <strong>рынка труда</strong></h3>
                         <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Моя будущая работа</p>
-                        <div class="block-17 my-4">
-                            <form action="" method="post" class="d-block d-flex">
-                                <div class="fields d-block d-flex">
-                                    <div class="textfield-search one-third">
-                                        <input type="text" class="form-control" placeholder="Ex: food, service, hotel">
-                                    </div>
-                                    <div class="select-wrap one-third">
-                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                        <select name="" id="" class="form-control" placeholder="Keyword search">
-                                            <option value="">Where</option>
-                                            <option value="">San Francisco USA</option>
-                                            <option value="">Berlin Germany</option>
-                                            <option value="">Lodon United Kingdom</option>
-                                            <option value="">Paris Italy</option>
+                        <div class="mr-5">
+                            <form action="" method="post">
+                                <!--<div class="">-->
+                                    <!--<div class="textfield-search one-third">-->
+                                        <div class="form-group">
+                                        <!--<div class="icon"><span class="ion-ios-arrow-down"></span></div>-->
+                                        <select id="spec" class="form-control select2" style="width: 100%;">
+                                            <?php $specs = R::getAll("SELECT * FROM spec");
+                                            foreach ($specs as $spec):
+                                            ?>
+                                            <option value="<?= $spec['id'] ?>" <?= ($spec['id']==2) ? "selected" : "" ?>><?= $spec['name'] ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
-                                </div>
-                                <input type="submit" class="search-submit btn btn-primary" value="Search">  
+                                    <!--</div>-->
+                                    <div class="form-group">
+                                        <!--<div class="icon"><span class="ion-ios-arrow-down"></span></div>-->
+                                        <select id="city" class="form-control select2" style="width: 100%;">
+                                            <?php $cities = R::getAll("SELECT * FROM city");
+                                            foreach ($cities as $city):
+                                            ?>
+                                            <option value="<?= $city['id'] ?>" <?= ($city['id']==2) ? "selected" : "" ?>><?= $city['name'] ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                <!--</div><br>-->
+                                <input type="submit" class="search-submit btn btn-primary" value="Поиск">  
                             </form>
                         </div>
                         <p>или поискать по</p>
@@ -214,84 +227,84 @@
         
 <br><br>
 
-        <section class="ftco-section services-section bg-light">
+<section id="better" class="ftco-section services-section bg-light">
             <div class="container">
                 <div class="col-md-12">
                     <div class="destination-slider owl-carousel ftco-animate">
                         <div class="item">
                             <div class="destination">
-                                <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-1.jpg);">
+                                <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(https://nu.edu.kz/wp-content/uploads/2017/11/2-2.jpg);">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <span class="icon-search2"></span>
                                     </div>
                                 </a>
                                 <div class="text p-3">
-                                    <h3><a href="#">Paris, Italy</a></h3>
+                                    <h3><a href="#">Нур-Султан</a></h3>
                                     <span class="listing">15 Listing</span>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
                             <div class="destination">
-                                <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-2.jpg);">
+                                <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(https://kursiv.kz/sites/default/files/styles/_xlarge_1280x720/public/2019-12/tokaev-i-sagintaev-podderzhali-ideyu-pereimenovaniya-almaty.png?itok=xEW10WWA);">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <span class="icon-search2"></span>
                                     </div>
                                 </a>
                                 <div class="text p-3">
-                                    <h3><a href="#">San Francisco, USA</a></h3>
+                                    <h3><a href="#">Алматы</a></h3>
                                     <span class="listing">20 Listing</span>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
                             <div class="destination">
-                                <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-3.jpg);">
+                                <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(https://media-cdn.tripadvisor.com/media/photo-s/11/38/a8/b6/getlstd-property-photo.jpg">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <span class="icon-search2"></span>
                                     </div>
                                 </a>
                                 <div class="text p-3">
-                                    <h3><a href="#">Lodon, UK</a></h3>
+                                    <h3><a href="#">Шымкент</a></h3>
                                     <span class="listing">10 Listing</span>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
                             <div class="destination">
-                                <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-4.jpg);">
+                                <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(https://lh3.googleusercontent.com/proxy/IZZ-c1u8sRKBITQ_fVPjIr1s0nSAmbxPHqeSjp0RHQJUY-Ewl0W7xmYknL0HziFI6tUKsTufxmkJnCEXvBrgWt5ZQXSUaM65ACZu_B94GO7EPEZVg-1Ncti-YiTG5EjyXTPSaw);">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <span class="icon-search2"></span>
                                     </div>
                                 </a>
                                 <div class="text p-3">
-                                    <h3><a href="#">Lion, Singapore</a></h3>
+                                    <h3><a href="#">Караганда</a></h3>
                                     <span class="listing">3 Listing</span>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
                             <div class="destination">
-                                <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-5.jpg);">
+                                <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(http://magnitogorsk.ru/storage/app/media/uploaded-files/kaz1.jpg);">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <span class="icon-search2"></span>
                                     </div>
                                 </a>
                                 <div class="text p-3">
-                                    <h3><a href="#">Australia</a></h3>
+                                    <h3><a href="#">Атырау</a></h3>
                                     <span class="listing">3 Listing</span>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
                             <div class="destination">
-                                <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-6.jpg);">
+                                <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(https://ksors.kz/wp-content/uploads/2020/08/%D0%92%D0%BE%D1%81%D1%82%D0%BE%D1%87%D0%BD%D1%8B%D0%BC-%D0%B2%D0%BE%D1%80%D0%BE%D1%82%D0%B0%D0%BC-%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD%D0%B0-%D0%A3%D1%81%D1%82%D1%8C-%D0%9A%D0%B0%D0%BC%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE%D1%80%D1%81%D0%BA%D1%83-300-%D0%BB%D0%B5%D1%82.jpeg);">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <span class="icon-search2"></span>
                                     </div>
                                 </a>
                                 <div class="text p-3">
-                                    <h3><a href="#">Paris, Italy</a></h3>
+                                    <h3><a href="#">Усть-Каменогорск</a></h3>
                                     <span class="listing">3 Listing</span>
                                 </div>
                             </div>
@@ -305,7 +318,7 @@
 
 
 
-        <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_1.jpg);">
+<section  class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_1.jpg);">
             <div class="container">
                 <div class="row justify-content-center mb-5 pb-3">
                     <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
@@ -535,20 +548,19 @@
             </div>
         </section>
 
-        <section class="ftco-section testimony-section bg-light">
+        <section id="about" class="ftco-section testimony-section bg-light">
             <div class="container">
                 <div class="row justify-content-start">
                     <div class="col-md-5 heading-section ftco-animate">
-                        <span class="subheading">Best Directory Website</span>
-                        <h2 class="mb-4 pb-3"><strong>Why</strong> Choose Us?</h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life.</p>
-                        <p><a href="#" class="btn btn-primary btn-outline-primary mt-4 px-4 py-3">Read more</a></p>
+                        <span class="subheading">О нас</span>
+                        <h2 class="mb-4 pb-3">Почему <strong>мы?</strong></h2>
+                        <p>Институциональные механизмы и процедуры, которые координируют сбор, обработку, хранение, поиск и распространение информации о рынке труда, известны как Информационная система рынка труда. Цель, таких информационных систем – генерировать, анализировать и распространять информацию о текущих и будущих потребностях в навыках. В этом отношении термин «информационная система» относится не только к системам информационных технологий, но и к более полному набору институциональных механизмов, технологических платформ, наборов данных и информационных потоков, а также к способам их объединения для предоставления информации тем, кто в ней нуждается.</p>
+                        <p><a href="#" class="btn btn-primary btn-outline-primary mt-4 px-4 py-3">Подробнее</a></p>
                     </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-6 heading-section ftco-animate">
-                        <span class="subheading">Testimony</span>
-                        <h2 class="mb-4 pb-3"><strong>Our</strong> Guests Says</h2>
+                        <span class="subheading">Сотрудники</span>
+                        <h2 class="mb-4 pb-3">Состав <strong>команды</strong></h2>
                         <div class="row ftco-animate">
                             <div class="col-md-12">
                                 <div class="carousel-testimony owl-carousel">
@@ -561,8 +573,8 @@
                                             </div>
                                             <div class="text ml-md-4">
                                                 <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                                <p class="name">Dennis Green</p>
-                                                <span class="position">Guest from italy</span>
+                                                <p class="name">Сапаров Азамат</p>
+                                                <span class="position">Руководитель</span>
                                             </div>
                                         </div>
                                     </div>
@@ -575,8 +587,8 @@
                                             </div>
                                             <div class="text ml-md-4">
                                                 <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                                <p class="name">Dennis Green</p>
-                                                <span class="position">Guest from London</span>
+                                                <p class="name">Денис Цой</p>
+                                                <span class="position">Главный специалист</span>
                                             </div>
                                         </div>
                                     </div>
@@ -589,8 +601,8 @@
                                             </div>
                                             <div class="text ml-md-4">
                                                 <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                                <p class="name">Dennis Green</p>
-                                                <span class="position">Guest from Philippines</span>
+                                                <p class="name">Александр Дияров</p>
+                                                <span class="position">Дизайнер</span>
                                             </div>
                                         </div>
                                     </div>
@@ -607,8 +619,25 @@
                 <div class="row">
                     <div class="col-md">
                         <div class="ftco-footer-widget">
-                            <h2 class="ftco-heading-2">dirEngine</h2>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                            <h2 class="ftco-heading-2">LM IS</h2>
+                            <p>Используется метод анализа посредством агрегированных статистических данных, а именно структура экономики, объемы производства товаров, инвестиции в основной капитал, количество занятых и безработных. Также используется метод экстраполяции для прогноза в потребностях в кадрах в разрезе по областям Республики Казахстан.</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="ftco-footer-widget">
+                            <h2 class="ftco-heading-2">Information</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="index" class="py-2 d-block">Главная</a></li>
+                                <li><a href="#about" class="py-2 d-block">О нас</a></li>
+                                <li><a href="#better" class="py-2 d-block">Специальности</a></li>
+                                <li><a href="#section-counter" class="py-2 d-block">Факты</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="ftco-footer-widget">
+                            <h2 class="ftco-heading-2">Социальные сети</h2>
                             <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -618,37 +647,12 @@
                     </div>
                     <div class="col-md">
                         <div class="ftco-footer-widget">
-                            <h2 class="ftco-heading-2">Information</h2>
-                            <ul class="list-unstyled">
-                                <li><a href="#" class="py-2 d-block">About</a></li>
-                                <li><a href="#" class="py-2 d-block">Service</a></li>
-                                <li><a href="#" class="py-2 d-block">Terms and Conditions</a></li>
-                                <li><a href="#" class="py-2 d-block">Become a partner</a></li>
-                                <li><a href="#" class="py-2 d-block">Best Price Guarantee</a></li>
-                                <li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md">
-                        <div class="ftco-footer-widget">
-                            <h2 class="ftco-heading-2">Customer Support</h2>
-                            <ul class="list-unstyled">
-                                <li><a href="#" class="py-2 d-block">FAQ</a></li>
-                                <li><a href="#" class="py-2 d-block">Payment Option</a></li>
-                                <li><a href="#" class="py-2 d-block">Booking Tips</a></li>
-                                <li><a href="#" class="py-2 d-block">How it works</a></li>
-                                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md">
-                        <div class="ftco-footer-widget">
-                            <h2 class="ftco-heading-2">Have a Questions?</h2>
+                            <h2 class="ftco-heading-2">Контакты</h2>
                             <div class="block-23 mb-3">
                                 <ul>
-                                    <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                                    <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+                                    <li><span class="icon icon-map-marker"></span><span class="text">РК, г. Нур-Султан</span></li>
+                                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">+7 775 666 1007</span></a></li>
+                                    <li><a href="#"><span class="icon icon-envelope"></span><span class="text">azamat_sapar@gmail.com</span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -666,6 +670,16 @@
         </footer>
        <script src="js/jquery.min.js"></script>
         <script src="js/jquery-migrate-3.0.1.min.js"></script>
+        
+        <!-- Select2 -->
+        <script src="plugins/select2/js/select2.full.min.js"></script>
+        <!-- Summernote -->
+        <script src="plugins/summernote/summernote-bs4.min.js"></script>
+        <!-- SweetAlert2 -->
+        <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+        <!-- Toastr -->
+        <script src="plugins/toastr/toastr.min.js"></script>
+        
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.easing.1.3.js"></script>
@@ -681,5 +695,11 @@
         <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>-->
         <!--<script src="js/google-map.js"></script>-->
         <script src="js/main.js"></script>
+         <script>
+            $(document).ready(function(){
+                //Initialize Select2 Elements
+                $('.select2').select2();
+            });
+            </script>
     </body>
 </html>
