@@ -82,7 +82,7 @@ require_once './db/db.php';
                                         <div class="form-group">
                                         <!--<div class="icon"><span class="ion-ios-arrow-down"></span></div>-->
                                         <select id="spec" class="form-control select2" style="width: 100%;">
-                                            <?php $specs = R::getAll("SELECT * FROM spec");
+                                            <?php $specs = R::getAll("SELECT * FROM azamat_spec");
                                             foreach ($specs as $spec):
                                             ?>
                                             <option value="<?= $spec['id'] ?>" <?= ($spec['id']==2) ? "selected" : "" ?>><?= $spec['name'] ?></option>
@@ -93,7 +93,7 @@ require_once './db/db.php';
                                     <div class="form-group">
                                         <!--<div class="icon"><span class="ion-ios-arrow-down"></span></div>-->
                                         <select id="city" class="form-control select2" style="width: 100%;">
-                                            <?php $cities = R::getAll("SELECT * FROM city");
+                                            <?php $cities = R::getAll("SELECT * FROM azamat_city");
                                             foreach ($cities as $city):
                                             ?>
                                             <option value="<?= $city['id'] ?>" <?= ($city['id']==2) ? "selected" : "" ?>><?= $city['name'] ?></option>
