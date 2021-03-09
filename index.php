@@ -1,5 +1,5 @@
 <?php
-
+if(session_status() != PHP_SESSION_ACTIVE) session_start ();
 require_once './db/db.php';
 ?>
 
@@ -61,14 +61,14 @@ require_once './db/db.php';
                         <li class="nav-item"><a href="#about" class="nav-link">О нас</a></li>
                         <li class="nav-item"><a href="#better" class="nav-link">Специальности</a></li>
                         <li class="nav-item"><a href="#section-counter" class="nav-link">Факты</a></li>
-                        <li class="nav-item cta"><a href="#" class="nav-link"><span>Войти</span></a></li>
+                        <li class="nav-item cta"><a href="login" class="nav-link"><span>Войти</span></a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- END nav -->
 
-        <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
+        <div class="hero-wrap js-fullheight" style="background-image: url('https://dis-group.ru/dis02/assets/uploads/2018/04/upravlenie-bazami-dannih.jpg');"><!-- images/bg_1.jpg -->
             <div class="overlay"></div>
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
@@ -111,6 +111,7 @@ require_once './db/db.php';
                             <!--<span class="d-flex justify-content-md-center align-items-md-center"><a href="#"><i class="flaticon-meeting-point"></i>Places</a></span>--> 
                             <span class="d-flex justify-content-md-center align-items-md-	center"><a href="#"><i class="flaticon-shopping-bag"></i>Частной</a></span>
                         </p>
+                        <p>компании</p>
                     </div>
                     <div class="col-md-6 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
                         <div  id = "map" style = "height: 450px;"></div>
@@ -118,7 +119,7 @@ require_once './db/db.php';
          // Creating map options
         var mapOptions = {
            center: [42.31298,69.72328],
-           zoom: 4
+           zoom: 5
         };
          
          // Creating a map object
