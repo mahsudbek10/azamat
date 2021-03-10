@@ -28,9 +28,7 @@ if($_SERVER['REQUEST_METHOD']==="POST"){
 </form>
 </div>
 <?php else: 
-    require_once './db/db.php';
+     header("Location: admin/index");
 ?>
-
-
 
 <?php endif; ?>
