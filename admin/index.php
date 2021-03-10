@@ -52,8 +52,8 @@ require_once './header.php';
                                 <select name="city" id="city" class="form-control select2">
                                     <?php $cities = R::getAll("SELECT * FROM azamat_city ORDER BY name ASC"); ?>
                                     <option value="*">Все</option>
-                                    <?php foreach($cities as $city): ?>
-                                    <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
+                                    <?php foreach ($cities as $city): ?>
+                                        <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div><hr>
@@ -130,6 +130,116 @@ require_once './header.php';
                 </div>
                 <!-- /.col (RIGHT) -->
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div  id = "map" style = "height: 450px;"></div>
+                    <script>
+                        // Creating map options
+                        var mapOptions = {
+                            center: [42.31298, 69.72328],
+                            zoom: 5
+                        };
+
+                        // Creating a map object
+                        var map = new L.map('map', mapOptions);
+
+                        // Creating a Layer object
+                        var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+                        // Adding layer to the map
+                        map.addLayer(layer);
+
+                        // L.geoJson(myGeoson).addTo(map);
+                        var marker = L.marker([48.038, 70.789]);    // Creating a Marker
+                        //
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Карагандинская область</b>').openPopup();
+                        marker.addTo(map); // Adding marker to the map
+
+                        marker = L.marker([42.340782, 69.596329]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Шымкент</b>').openPopup();
+                        marker.addTo(map);
+
+                        marker = L.marker([51.0883143, 71.4461454]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Нур-Султан</b>').openPopup();
+                        marker.addTo(map);
+
+                        marker = L.marker([43.25654, 76.92848]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Алматы</b>').openPopup();
+                        marker.addTo(map);
+
+
+                        marker = L.marker([52.164, 71.691]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Акмолинская область</b>').openPopup();
+                        marker.addTo(map);
+
+                        marker = L.marker([50.2833333333, 57.1666666667]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Актюбинская область</b>').openPopup();
+                        marker.addTo(map);
+                        //         
+                        marker = L.marker([43.41667, 78.38333]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Алматинская область</b>').openPopup();
+                        marker.addTo(map);
+                        //         
+                        marker = L.marker([47.63530685, 51.6639453241291]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Атырауская область</b>').openPopup();
+                        marker.addTo(map);
+                        //         
+                        marker = L.marker([49.95649, 82.611923]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Восточно-Казахстанская область</b>').openPopup();
+                        marker.addTo(map);
+                        //         
+                        marker = L.marker([42.948381, 71.410217]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Жамбылская область</b>').openPopup();
+                        marker.addTo(map);
+                        //         
+                        marker = L.marker([51.222382, 51.373421]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Западно-Казахстанская</b>').openPopup();
+                        marker.addTo(map);
+                        //         
+
+                        //         
+                        marker = L.marker([52.949, 63.146]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Костанайская область‎</b>').openPopup();
+                        marker.addTo(map);
+                        //         
+                        marker = L.marker([43.671845, 51.173401]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Мангистауская область</b>').openPopup();
+                        marker.addTo(map);
+                        //         
+                        marker = L.marker([52.308479, 76.924438]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Павлодарская область‎</b>').openPopup();
+                        marker.addTo(map);
+                        //         
+                        marker = L.marker([54.863963, 69.157104]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Северо-Казахстанская область‎</b>').openPopup();
+                        marker.addTo(map);
+                        //         
+                        marker = L.marker([43.298692, 68.26296]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Туркестанская область‎</b>').openPopup();
+                        marker.addTo(map);
+                        //         
+                        marker = L.marker([44.879, 65.356]);    // Creating a Marker
+                        // Adding popup to the marker
+                        marker.bindPopup('<b>Кызылординская область</b>').openPopup();
+                        marker.addTo(map);
+                    </script>
+                </div> </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </section>

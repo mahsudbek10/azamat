@@ -260,7 +260,7 @@ require_once './db/db.php';
                         </div>
                         <div class="item">
                             <div class="destination">
-                                <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(https://media-cdn.tripadvisor.com/media/photo-s/11/38/a8/b6/getlstd-property-photo.jpg">
+                                <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(https://media-cdn.tripadvisor.com/media/photo-s/11/38/a8/b6/getlstd-property-photo.jpg)">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <span class="icon-search2"></span>
                                     </div>
