@@ -26,6 +26,12 @@ require_once '../db/db.php';
   <!-- Select2 -->
   <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- Toastr -->
+    <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
@@ -51,7 +57,7 @@ require_once '../db/db.php';
         <a href="index" class="nav-link">Главная</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="analyze" class="nav-link">Анализ данных</a>
+        <a href="index#map" class="nav-link">На карте</a>
       </li>
     </ul>
 
@@ -207,6 +213,12 @@ require_once '../db/db.php';
                 <a href="company" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Компании</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="vacance" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Вакансии</p>
                 </a>
               </li>
               <li class="nav-item">
