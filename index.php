@@ -139,7 +139,7 @@ require_once './db/db.php';
                     $rezume_count = R::getAll("SELECT id FROM azamat_rezume WHERE id_city=?",[$item['id']]);
                 ?>
                 marker = L.marker([<?= $item['x'] ?>, <?= $item['y'] ?>]);
-                marker.bindPopup('<b><?= $item['name'] ?></b><br><img src="<?= $item['img'] ?>" width="100px"><br>Резюме: <?= count($rezume_count); ?><br>Вакансии: <?= count($vacancy_count); ?>').openPopup();
+                marker.bindPopup('<b><?= $item['name'] ?></b><br><img src="<?= $item['img'] ?>" width="300px"><br>Резюме: <?= count($rezume_count); ?><br>Вакансии: <?= count($vacancy_count); ?>').openPopup();
                 marker.addTo(map); // Adding marker to the map
                 
                 

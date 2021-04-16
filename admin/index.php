@@ -127,9 +127,9 @@ require_once './header.php';
                                         $rezume_count = R::getAll("SELECT id FROM azamat_rezume WHERE id_city=?",[$item['id']]);
                                     ?>
                                     <tr>
-                                        <td><?= $item['name']; ?></td>
-                                        <td><?= count($vacancy_count); ?></td>
-                                        <td><?= count($rezume_count); ?></td>
+                                        <td><a href="more?city=<?= $item['id'] ?>"><?= $item['name']; ?></a></td>
+                                        <td><a href="more?city=<?= $item['id'] ?>"><?= count($vacancy_count); ?></a></td>
+                                        <td><a href="more?city=<?= $item['id'] ?>"><?= count($rezume_count); ?></a></td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
